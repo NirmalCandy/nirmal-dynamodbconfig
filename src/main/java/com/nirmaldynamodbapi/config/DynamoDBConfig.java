@@ -1,4 +1,4 @@
-package com.nirmaldynamodbapi.dynamodb.config;
+package com.nirmaldynamodbapi.config;
 
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
