@@ -16,22 +16,22 @@ import java.util.Map;
 public class PersonRepository {
 
     @Autowired
-    private DynamoDBMapper mapper;
+    DynamoDBMapper mapper;
 
-    public Person addperson (Person person){
+    public Person addPerson (Person person){
 
          mapper.save(person);
          return person;
     }
-    public Person findpersonbypersonid(String personid){
-        return mapper.load(Person.class,personid);
+    public Person findPersonByPersonId(String personId){
+        return mapper.load(Person.class,personId);
     }
 
-    public String deleteperson(Person person){
+    public String deletePerson(Person person){
         mapper.delete(person);
         return "person deleted";
     }
-    public String editperson( Person person){
+    public String editPerson( Person person){
         mapper.save(person,buildExpression(person));
         return "record updated";
     }
@@ -39,7 +39,7 @@ public class PersonRepository {
 
         DynamoDBSaveExpression dynamoDBSaveExpression= new DynamoDBSaveExpression();
         Map<String, ExpectedAttributeValue> expectedmap=new HashMap<>();
-        expectedmap.put("personid",new ExpectedAttributeValue(new AttributeValue().withS(person.getPersonid())));
+        expectedmap.put("personid",new ExpectedAttributeValue(new AttributeValue().withS(person.getPersonId())));
         dynamoDBSaveExpression.setExpected(expectedmap);
         return dynamoDBSaveExpression;
     }
